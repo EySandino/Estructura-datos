@@ -1,0 +1,6 @@
+Color,Año,Cilindraje,Marca,Modelo,Kilometraje,Tipo,Características,Estado,Cliente,Vendedor
+Rojo,2020,2000,Toyota,Corolla,50000,sedan,Puertas: 4,disponible,null,null
+Azul,2019,1800,Honda,Civic,45000,hatchback,Puertas: 2,disponible,null,null
+Negro,2021,2500,Ford,Explorer,30000,suv,Capacidad de carga: 500kg,disponible,null,null
+123456,rojo,2015,200,hyundai,2014,100,suv,cuatro,disponible,null,null
+123456,a,2,2,hyundai,2015,100,suv,rojo,disponible,null,null
