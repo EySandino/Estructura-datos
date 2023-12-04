@@ -1,11 +1,13 @@
 package main;
 
 import javax.swing.JOptionPane;
-import security.Gestor;
-import security.InfoEmpresa;
+import data.ConsultorDatos;
+import data.GestorDatos;
+import data.InfoEmpresa;
+
 
 public class Menus {
-    public static void menuOpciones() {
+    public static void opcionesPrincipales() {
         String opcionUsuario;
 
         do {
@@ -20,7 +22,7 @@ public class Menus {
 
             switch (opcionUsuario) {
                 case "1":
-                    Gestor.agregarElemento(1);
+                    GestorDatos.agregarElemento(1);
                     break;
                 case "2":
                     menuReportes();
@@ -60,13 +62,13 @@ public class Menus {
             
             switch (opcionUsuario) {
                 case "1":
-                    Gestor.agregarElemento(2);
+                    GestorDatos.agregarElemento(2);
                     break;
                 case "2":
-                    Gestor.clienteID();
+                    ConsultorDatos.consultarClienteID();
                     break;
                 case "3":
-                    Gestor.consultarDetallesUsuario();
+                    ConsultorDatos.consultarDetallesUsuario();
                     break;
                 case "0":
                     break;
@@ -76,7 +78,35 @@ public class Menus {
         } while (!"0".equals(opcionUsuario));
     }
     
-    public static void menuReportes(){
+    private static void menuVehiculos() {
+        String opcionUsuario;
+
+        do {
+            opcionUsuario = JOptionPane.showInputDialog("Seleccione una opción:\n"
+                    + "1. Crear vehículo\n"
+                    + "2. Consultar lista de vehículos\n"
+                    + "3. Datos del vehículo\n"
+                    + "0. Salir");
+
+            switch (opcionUsuario) {
+                case "1":
+                    GestorDatos.agregarElemento(3);  // Tipo de elemento 3 para vehículos
+                    break;
+                case "2":
+                    ConsultorDatos.consultarListaVehiculos();
+                    break;
+                case "3":
+                    ConsultorDatos.consultarDetallesVehiculo();
+                    break;
+                case "0":
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, seleccione una opción válida.");
+            }
+        } while (!"0".equals(opcionUsuario));
+    }
+    
+    private static void menuReportes(){
         String opcionUsuario;
 
         int opcion;
@@ -91,12 +121,13 @@ public class Menus {
 
             switch (opcionUsuario) {
                 case "1":
-                    // Lógica para la cantidad total de autos vendidos, reservados y disponibles
-                    System.out.println("Opción 1 seleccionada");
+                    JOptionPane.showMessageDialog(null,
+                              "Total de autos vendidos: " + Contadores.getAutosVendidos() + "\n"
+                            + "Total de autos reservados: " + Contadores.getAutosReservados() + "\n"
+                            + "Total de autos disponibles: " + Contadores.getAutosDisponibles() + "\n");
                     break;
                 case "2":
-                    // Lógica para la cantidad de clientes registrados, compraron y reservaron un vehículo
-                    System.out.println("Opción 2 seleccionada");
+                    menuReporteClientes();
                     break;
                 case "3":
                     // Lógica para el top 3 de clientes que más compraron vehículos
@@ -115,30 +146,29 @@ public class Menus {
         } while (!"0".equals(opcionUsuario));
     }
     
-    private static void menuVehiculos() {
+    private static void menuReporteClientes() {
         String opcionUsuario;
+       
+        int opcion;
 
         do {
-            opcionUsuario = JOptionPane.showInputDialog("Seleccione una opción:\n"
-                    + "1. Crear vehículo\n"
-                    + "2. Consultar lista de vehículos\n"
-                    + "3. Datos del vehículo\n"
-                    + "0. Salir");
+            opcionUsuario = JOptionPane.showInputDialog("Menú de reportes de clientes\nSeleccione una opción:\n"
+                    + "1) Clientes registrados en el sistema\n"
+                    + "2) Clientes que han comprado vehículos\n"
+                    + "3) Clientes que han reservado vehículos\n"
+                    + "0) Salir");
 
             switch (opcionUsuario) {
                 case "1":
-                    Gestor.agregarElemento(3);  // Tipo de elemento 3 para vehículos
+                    JOptionPane.showMessageDialog(null, "La cantidad de clientes registrados en el sistema es de: " + Contadores.getClientesRegistrados());
                     break;
                 case "2":
-                    Gestor.consultarListaVehiculos();
+                    JOptionPane.showMessageDialog(null, "Lista de clientes que han comprado vehículos");
                     break;
                 case "3":
-                    Gestor.consultarDetallesVehiculo();
-                    break;
-                case "0":
-                    break;
+                    JOptionPane.showMessageDialog(null, "Lista de clientes que han reservado vehículos");
                 default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, seleccione una opción válida.");
+                    System.out.println("Opción no válida. Por favor, elija una opción válida.");
             }
         } while (!"0".equals(opcionUsuario));
     }

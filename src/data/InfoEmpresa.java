@@ -1,4 +1,4 @@
-package security;
+package data;
 
 public class InfoEmpresa {
     private static String nombre = "AzzaCar";

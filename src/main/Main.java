@@ -1,15 +1,19 @@
 package main;
 
-import security.Gestor;
+import data.GeneradorEscructuras;
+import data.GestorDatos;
 public class Main {
 
     public static void main(String[] args) {
+        GeneradorEscructuras.generarPilaClientes();
+        GeneradorEscructuras.generarListaVehiculos();
+        
         boolean validacion;
         
         do{
-            validacion = Gestor.iniciarSesion();
+            validacion = GestorDatos.iniciarSesion();
         } while (!validacion);
         
-        Menus.menuOpciones();
+        Menus.opcionesPrincipales();
     }
 }

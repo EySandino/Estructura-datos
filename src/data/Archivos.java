@@ -1,4 +1,4 @@
-package security;
+package data;
 
 public class Archivos {
     private final static String ARCHIVO_USUARIOS = "src\\files\\users.txt";
